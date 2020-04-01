@@ -12,6 +12,8 @@ public class Worker {
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
+        factory.setPort(5672);
+
         final Connection connection = factory.newConnection();
         final Channel channel = connection.createChannel();
 
