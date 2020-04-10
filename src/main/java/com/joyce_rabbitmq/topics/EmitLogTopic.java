@@ -12,6 +12,7 @@ public class EmitLogTopic {
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
+        factory.setPort(5672);
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {
 
@@ -23,8 +24,8 @@ public class EmitLogTopic {
                     "quick.orange.fox",        // routing1
                     "lazy.brown.fox",          // routing2
                     "lazy.pink.rabbit",        // routing2
-                    "quick.brown.fox"
-                    ,"quick.orange.male.rabbit"
+                    "quick.brown.fox"          // 丢弃
+                    ,"quick.orange.male.rabbit"     // 丢弃
             };
             int count = 0;
             for (int i = 0; i < routingKeys.length; i++) {

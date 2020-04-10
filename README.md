@@ -26,5 +26,11 @@ https://www.rabbitmq.com/tutorials/tutorial-four-java.html
 <br/>
 路由模式：消费者可以通过routing路由只消费自己想监听的数据，如果一条消息没有被任何消费者监听，则会被丢弃。
 
-
-
+###  5) Topics
+package "com.joyce_rabbitmq.topics" demo is from 
+https://www.rabbitmq.com/tutorials/tutorial-five-java.html
+<br/>
+routing 路由可以模糊匹配长这样： "\*.\*.rabbit" 
+<br/>
+\*（星号）可以代替一个单词。<br/>
+＃（哈希）可以替代零个或多个单词。

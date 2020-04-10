@@ -11,6 +11,7 @@ public class ReceiveLogsTopic {
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
+        factory.setPort(5672);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
@@ -18,8 +19,8 @@ public class ReceiveLogsTopic {
         String queueName = channel.queueDeclare().getQueue();
 
         argv = new String[]{
-//                "*.orange.*"   // routing 1  第一次启动main
-                "*.*.rabbit", "lazy.#"    // routing 2   第二次启动main
+                "*.orange.*"   // routing 1  第一次启动main
+//                "*.*.rabbit", "lazy.#"    // routing 2   第二次启动main
         };
 
         if (argv.length < 1) {
@@ -41,9 +42,6 @@ public class ReceiveLogsTopic {
 //                    delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
 //        };
 //        channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
-
-
-
 
         // auto ack = false
         DefaultConsumer defaultConsumer = new DefaultConsumer(channel) {
